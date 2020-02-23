@@ -2,7 +2,8 @@
 
 System store task gererated from scheduler at regular event. THe scheduler generate task and put in the queue. 
 Listner takes the tasks from the queue and store in DB. The stored task can be viewd on UI with the web application. 
-Also task list is getting update in web app when new task is stored.
+Also task list is getting update in web app when new task is stored. Here are are some screen shot of how UI look like.
+https://github.com/kumar-devender/omnius-event-store/wiki/OmniUs-Home-screen-shot
 
 ## Getting Started
 
@@ -50,6 +51,10 @@ in application.properties file.
 * [Flyway] (http://flywaydb.org) Schema creation and migration
 * [Spring Boot, lombok, springfox]
 * [Lots of love]
+
+## Further enhancement
+* Pagination of task can be implemented on UI.
+* Integration test and unit test.
 
 ## Author
 
