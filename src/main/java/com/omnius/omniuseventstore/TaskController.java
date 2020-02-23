@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping({"", "/v1"})
 @RequiredArgsConstructor
 @Api(value = "Omnius Event Store REST API")
 public class TaskController {

@@ -26,7 +26,7 @@ public class Swagger2Config {
     private ApiInfo apiEndPointsInfo() {
         return new ApiInfoBuilder().title("Omnius Event Store")
                 .description("Omnius Event Store REST API")
-                .contact(new Contact("Devender Kumar", "", "ramesh24fadatare@gmail.com"))
+                .contact(new Contact("Devender Kumar", "", "youremail@gmail.com"))
                 .version("1.0.0")
                 .build();
     }
