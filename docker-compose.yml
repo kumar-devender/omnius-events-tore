@@ -1,0 +1,51 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=omnius_event_store
+      - POSTGRES_USER=omnius_event_store
+      - POSTGRES_DB=omnius_event_store
+    restart: unless-stopped
+  # message broker
+  activemq:
+    image: webcenter/activemq:latest
+    container_name: activemq
+    ports:
+      - 8161:8161
+      - 61616:61616
+      - 61613:61613
+    networks:
+      - app
+    environment:
+      ACTIVEMQ_NAME: amq
+      ACTIVEMQ_REMOVE_DEFAULT_ACCOUNT: 'True'
+      ACTIVEMQ_ADMIN_LOGIN: admin
+      ACTIVEMQ_ADMIN_PASSWORD: admin
+  # APP*****************************************
+  appcontainer:
+    build:
+      context: .
+      args:
+        JAR_FILE: /omnius-event-store-0.0.1-SNAPSHOT.jar
+    ports:
+      - 8080:8080
+    networks:
+      - app
+    depends_on:
+      - postgres
+      - activemq
+    links:
+      - postgres
+      - activemq
+volumes:
+  postgres-data:
+networks:
+  app:
